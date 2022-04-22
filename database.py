@@ -7,10 +7,13 @@ class Database:
         self.db = self.client.anime_database
 
     def insert_anime(self, data):
-        self.db.anime_collection.insert_one(data)
+        self.db.animes.insert_one(data)
     
     def find_query(self, query):
-        return self.db.anime_collection.find(query)
+        return self.db.animes.find(query)
     
     def update_anime(self, query, new_value):
-        self.db.anime_collection.update_one(query, new_value)
+        self.db.animes.update_one(query, new_value)
+    
+    def insert_recents(self, data):
+        self.db.recents.insert_one(data)

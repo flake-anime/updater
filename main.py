@@ -23,9 +23,17 @@ for anime in recent_subbed:
     if not result:
         anime = get_complete_anime_info(episode_link)
         database.insert_anime(anime)
+        database.insert_recents({
+            'gogo_id': gogo_id,
+            'episode_number': episode_number,
+        })
 
     result_episodes = result[0]['episodes']
     if episode_number not in result_episodes.keys():
         episode = get_all_episode_details(episode_number, episode_link)
         result_episodes[episode_number] = episode
         database.update_anime({'gogo_id': gogo_id}, {'$set': {'episodes': result_episodes}})
+        database.insert_recents({
+            'gogo_id': gogo_id,
+            'episode_number': episode_number,
+        })
