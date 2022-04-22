@@ -38,10 +38,10 @@ class RecentAnimeScrapper:
                 imgURL = details[-1].replace('"', "")
 
                 details = {
-                    "episode": episodeNum,
-                    "ID": gogoID,
-                    "link": episodeLink,
-                    "imgURL": imgURL
+                    "episode_number": episodeNum,
+                    "gogo_id": gogoID,
+                    "episode_link": episodeLink,
+                    # "cover": imgURL
                 }
 
                 animeDetails.append(details)
@@ -81,10 +81,10 @@ class RecentAnimeScrapper:
                 imgURL = details[-1].replace('"', "")
 
                 details = {
-                    "episode": episodeNum,
-                    "ID": gogoID,
-                    "link": episodeLink,
-                    "imgURL": imgURL
+                    "episode_number": episodeNum,
+                    "gogo_id": gogoID,
+                    "episode_link": episodeLink,
+                    # "cover": imgURL
                 }
 
                 animeDetails.append(details)
