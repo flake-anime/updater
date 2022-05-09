@@ -19,11 +19,13 @@ def update_database():
     recent_subbed = crawler.get_recent_dubbed()
     recent_dubbed = crawler.get_recent_dubbed()
 
+    # Subbed
     for anime in recent_subbed:
         gogo_id = anime['gogo_id']
         episode_link = anime['episode_link']
         episode_number = anime['episode_number']
 
+        # If anime is not in the database, add it, and add it to recents
         result = database.find_query({'gogo_id': gogo_id})
         if not result:
             anime = get_complete_anime_info(episode_link)
@@ -33,8 +35,8 @@ def update_database():
                 'episode_number': episode_number,
             })
 
+        # If episode does not exist in the anime, add it, and add it to recents
         result_episodes = result[0]['episodes']
-
         is_episode_exists = False
         for episode in result_episodes:
             if episode['episode_number'] == episode_number:
@@ -50,11 +52,13 @@ def update_database():
                 'episode_number': episode_number,
             })
     
+    # Dubbed
     for anime in recent_dubbed:
         gogo_id = anime['gogo_id']
         episode_link = anime['episode_link']
         episode_number = anime['episode_number']
 
+        # If anime is not in the database, add it, and add it to recents
         result = database.find_query({'gogo_id': gogo_id})
         if not result:
             anime = get_complete_anime_info(episode_link)
@@ -64,8 +68,8 @@ def update_database():
                 'episode_number': episode_number,
             })
 
+        # If episode does not exist in the anime, add it, and add it to recents
         result_episodes = result[0]['episodes']
-
         is_episode_exists = False
         for episode in result_episodes:
             if episode['episode_number'] == episode_number:
