@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 class RecentAnimeScrapper:
+    BASE_URL = "https://ww2.gogoanimes.org"
+
     def __init__(self, pages):
         self.pages = pages
     
@@ -40,7 +42,7 @@ class RecentAnimeScrapper:
                 details = {
                     "episode_number": episodeNum,
                     "gogo_id": gogoID,
-                    "episode_link": episodeLink,
+                    "episode_link": self.BASE_URL + episodeLink,
                     # "cover": imgURL
                 }
 
@@ -83,7 +85,7 @@ class RecentAnimeScrapper:
                 details = {
                     "episode_number": episodeNum,
                     "gogo_id": gogoID,
-                    "episode_link": episodeLink,
+                    "episode_link": self.BASE_URL + episodeLink,
                     # "cover": imgURL
                 }
 
